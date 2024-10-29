@@ -26,15 +26,24 @@ void loop() {
   int sw_t;
   int sw = gpio_get(17); 
 
-  while(sw==1){
-    sw_t++;
+  while(1){
+    while(sw==1){
+      sw_t++;
+    }
+    if(sw_t=<t1){
+      morse[i]=0;
+    }else {
+      morse[i]=1;
+    }
+    i++;
+    sw_t=0;
+    while(sw==0){
+      sw_t++;
+    }
+    if(sw_t>t2){
+      break;
+    }
   }
-  if(sw_t=<t1){
-    morse[i]=0;
-  }else {
-    morse[i]=1;
-  }
-  i++;
-
 
 }
+
