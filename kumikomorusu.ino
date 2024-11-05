@@ -33,7 +33,7 @@ void loop() {
 	sleepus(100);
   }
 
-  if(sw_t=<t1){
+  if(sw_t=<3000){
       morse[i]=0;
   }else {
       morse[i]=1;
@@ -48,7 +48,7 @@ void loop() {
   }
 
 
-  if(sw_t<t2){
+  if(sw_t<7000){
       //たけちゃん頑張りポイント
 
 	morse={\0,\0,\0,\0};
