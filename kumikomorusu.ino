@@ -1,13 +1,11 @@
 #include <I2CLiquidCrystal.h>
 #include <Wire.h>
 
+int morse[5];
+
 // LCD制御用オブジェクト(lcd)の宣言
 I2CLiquidCrystal lcd(20, (bool)false);
 
-//スイッチの0/1判定用外部変数
-int t1,t2,t3,t4,t5,t6;
-
-int str=0;
 
 void setup() {
   // LCD制御に使用するピンの設定
@@ -22,28 +20,39 @@ void setup() {
 
 }
 
+
+
+
 void loop() {
   int sw_t;
   int sw = gpio_get(17); 
 
-  while(1){
-    while(sw==1){
-      sw_t++;
-    }
-    if(sw_t=<t1){
-      morse[i]=0;
-    }else {
-      morse[i]=1;
-    }
-    i++;
-    sw_t=0;
-    while(sw==0){
-      sw_t++;
-    }
-    if(sw_t>t2){
-      break;
-    }
+
+  while(sw==1){
+	sw_t++;
+	sleepus(100);
   }
 
-}
+  if(sw_t=<t1){
+      morse[i]=0;
+  }else {
+      morse[i]=1;
+  }
 
+  i++;
+  sw_t=0;
+
+  while(sw==0){
+      sw_t++;
+	sleepus(100);
+  }
+
+
+  if(sw_t<t2){
+      //たけちゃん頑張りポイント
+
+	morse={\0,\0,\0,\0};
+  }
+
+
+}
